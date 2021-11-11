@@ -38,24 +38,26 @@ class EditActivity : AppCompatActivity() {
         Log.d("hello", "id: $id")
 
         saveButton.setOnClickListener {
-
-            Log.d("hello", "hello")
-
             if(id == 0){
-                //新規レコード用のidを生成する
+                //新規レコード用の値を用意する
                 val maxId = realm.where<Todo>().max("id")?.toInt() ?: 0
                 val newId = maxId + 1
 
-                //新規レコード追加
-                realm.executeTransaction {
-                    val todo = realm.createObject<Todo>(newId)
-                    todo.content = todoContentText.text.toString()
-                    todo.isPinned = false
-                    todo.isAchieved = false
-                    todo.achievedDate = Date()
-                }
-            }
+                //新規レコード用意
+                val newTodo = Todo(
+                    id = newId,
+                    content = contentEdit.text.toString(),
+                    isPinned = false,
+                    isAchieved = false,
+                    achievedDate = Date()
+                )
 
+                //新規レコード追加
+                realm.beginTransaction()
+                realm.copyToRealmOrUpdate(newTodo)
+                realm.commitTransaction()
+            }
+            finish()
         }
 
 
