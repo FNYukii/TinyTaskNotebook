@@ -1,5 +1,6 @@
 package com.example.tinytodo
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,12 @@ class TodoRecyclerViewAdapter(
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val todo = todos[position]
         holder.todoContentText.text = todo?.content.toString()
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, EditActivity::class.java)
+            intent.putExtra("id", todo?.id)
+            it.context.startActivity(intent)
+        }
     }
 
 }

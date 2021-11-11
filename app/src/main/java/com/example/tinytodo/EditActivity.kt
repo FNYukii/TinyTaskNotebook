@@ -32,7 +32,8 @@ class EditActivity : AppCompatActivity() {
             val todo = realm.where<Todo>()
                 .equalTo("id", id)
                 .findFirst()
-            todoContentText.text = todo?.content
+            contentEdit.setText(todo?.content)
+            saveButton.text = "更新"
         }
 
         saveButton.setOnClickListener {
@@ -45,6 +46,14 @@ class EditActivity : AppCompatActivity() {
                 realm.executeTransaction {
                     val todo = realm.createObject<Todo>(newId)
                     todo.content = contentEdit.text.toString()
+                }
+            }
+            if(id != 0){
+                val todo = realm.where<Todo>()
+                    .equalTo("id", id)
+                    .findFirst()
+                realm.executeTransaction {
+                    todo?.content = contentEdit.text.toString()
                 }
             }
             finish()
