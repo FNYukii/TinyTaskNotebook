@@ -31,42 +31,58 @@ class EditActivity : AppCompatActivity() {
                 .equalTo("id", id)
                 .findFirst()
             contentEdit.setText(todo?.content)
-            saveButton.text = "更新"
-            deleteButton.visibility = View.VISIBLE
         }
 
-        saveButton.setOnClickListener {
-            if(id == 0){
-                //新規レコード用の値を用意する
-                val maxId = realm.where<Todo>().max("id")?.toInt() ?: 0
-                val newId = maxId + 1
-
-                //新規レコード追加
-                realm.executeTransaction {
-                    val todo = realm.createObject<Todo>(newId)
-                    todo.content = contentEdit.text.toString()
-                }
-            }
-            if(id != 0){
-                val todo = realm.where<Todo>()
-                    .equalTo("id", id)
-                    .findFirst()
-                realm.executeTransaction {
-                    todo?.content = contentEdit.text.toString()
-                }
-            }
+        backButton.setOnClickListener {
+            saveRecord()
             finish()
         }
 
         deleteButton.setOnClickListener {
-            val todo = realm.where<Todo>()
-                .equalTo("id", id)
-                .findFirst()
-            realm.executeTransaction {
-                todo?.deleteFromRealm()
-            }
+            deleteRecord()
             finish()
         }
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        saveRecord()
+    }
+
+    private fun saveRecord() {
+        if (id == 0 && contentEdit.text.isNotEmpty()){
+            insertRecord()
+        } else if (id != 0 && contentEdit.text.isNotEmpty()) {
+            updateRecord()
+        }
+    }
+
+    private fun insertRecord() {
+        val maxId = realm.where<Todo>().max("id")?.toInt() ?: 0
+        val newId = maxId + 1
+        realm.executeTransaction {
+            val todo = realm.createObject<Todo>(newId)
+            todo.content = contentEdit.text.toString()
+        }
+    }
+
+    private fun updateRecord() {
+        val todo = realm.where<Todo>()
+            .equalTo("id", id)
+            .findFirst()
+        realm.executeTransaction {
+            todo?.content = contentEdit.text.toString()
+        }
+    }
+
+    private fun deleteRecord() {
+        val todo = realm.where<Todo>()
+            .equalTo("id", id)
+            .findFirst()
+        realm.executeTransaction {
+            todo?.deleteFromRealm()
+        }
+    }
+
 }

@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="translucentGray">#55777777</color>
+    <color name="gray">#AAAAAA</color>
+
     <color name="fabColor">#FFBB86FC</color>
     <color name="dividerColor">#DDD</color>
 </resources>
