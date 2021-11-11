@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="fabColor">#FFBB86FC</color>
+    <color name="dividerColor">#DDD</color>
 </resources>

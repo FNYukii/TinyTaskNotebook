@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
@@ -39,7 +40,7 @@ class FirstFragment : Fragment() {
             .sort("id", Sort.DESCENDING)
 
         //RecyclerView設定
-        todoRecyclerView.layoutManager = GridLayoutManager(this.context, 1)
+        todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         todoRecyclerView.adapter = TodoRecyclerViewAdapter(todos)
     }
 
