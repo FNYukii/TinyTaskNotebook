@@ -29,15 +29,26 @@ class EditActivity : AppCompatActivity() {
                 .equalTo("id", id)
                 .findFirst()
             contentEdit.setText(todo?.content)
+            isAchieved = todo?.isAchieved!!
+            achievedDate = todo.achievedDate
+            if (isAchieved) {
+                achieveButton.setImageResource(R.drawable.ic_baseline_close_24)
+            }
         }
 
         backButton.setOnClickListener {
-            saveRecord()
+            saveTodo()
+            finish()
+        }
+
+        achieveButton.setOnClickListener {
+            isAchieved = !isAchieved
+            saveTodo()
             finish()
         }
 
         deleteButton.setOnClickListener {
-            deleteRecord()
+            deleteTodo()
             finish()
         }
 
@@ -45,36 +56,38 @@ class EditActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        saveRecord()
+        saveTodo()
     }
 
-    private fun saveRecord() {
+    private fun saveTodo() {
         if (id == 0 && contentEdit.text.isNotEmpty()){
-            insertRecord()
+            insertTodo()
         } else if (id != 0 && contentEdit.text.isNotEmpty()) {
-            updateRecord()
+            updateTodo()
         }
     }
 
-    private fun insertRecord() {
+    private fun insertTodo() {
         val maxId = realm.where<Todo>().max("id")?.toInt() ?: 0
         val newId = maxId + 1
         realm.executeTransaction {
             val todo = realm.createObject<Todo>(newId)
             todo.content = contentEdit.text.toString()
+            todo.isAchieved = isAchieved
         }
     }
 
-    private fun updateRecord() {
+    private fun updateTodo() {
         val todo = realm.where<Todo>()
             .equalTo("id", id)
             .findFirst()
         realm.executeTransaction {
             todo?.content = contentEdit.text.toString()
+            todo?.isAchieved = isAchieved
         }
     }
 
-    private fun deleteRecord() {
+    private fun deleteTodo() {
         val todo = realm.where<Todo>()
             .equalTo("id", id)
             .findFirst()

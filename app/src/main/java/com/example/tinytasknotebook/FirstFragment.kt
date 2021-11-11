@@ -30,6 +30,10 @@ class FirstFragment : Fragment() {
             val intent = Intent(this.context, EditActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         //Todosを取得
         val realm: Realm = Realm.getDefaultInstance()
@@ -40,6 +44,8 @@ class FirstFragment : Fragment() {
         //NoTodoText
         if (todos.size != 0) {
             noTodoText.visibility = View.INVISIBLE
+        } else {
+            noTodoText.visibility = View.VISIBLE
         }
 
         //RecyclerView設定
