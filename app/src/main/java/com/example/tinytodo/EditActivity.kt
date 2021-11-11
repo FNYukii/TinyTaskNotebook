@@ -15,7 +15,6 @@ class EditActivity : AppCompatActivity() {
 
     private var id = 0
     private var isAchieved = false
-    private var isPinned = false
     private var achievedDate: Date? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
