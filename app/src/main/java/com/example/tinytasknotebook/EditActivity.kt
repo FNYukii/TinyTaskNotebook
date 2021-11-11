@@ -2,6 +2,7 @@ package com.example.tinytasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -33,6 +34,7 @@ class EditActivity : AppCompatActivity() {
             achievedDate = todo.achievedDate
             if (isAchieved) {
                 achieveButton.setImageResource(R.drawable.ic_baseline_close_24)
+                achievedDatetimeContainer.visibility = View.VISIBLE
             }
         }
 
