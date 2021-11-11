@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_second_view.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/one_list_item.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/one_todo.xml" value="0.24814814814814815" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2953125" />
       </map>
     </option>
