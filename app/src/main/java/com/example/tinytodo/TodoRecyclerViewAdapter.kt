@@ -9,7 +9,7 @@ import io.realm.RealmResults
 import kotlinx.android.synthetic.main.one_todo.view.*
 
 class TodoRecyclerViewAdapter(
-    private val realmResults: RealmResults<Todo>
+    private val todos: RealmResults<Todo>
 ): RecyclerView.Adapter<TodoRecyclerViewAdapter.CustomViewHolder>(){
 
     class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -23,11 +23,11 @@ class TodoRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int {
-        return realmResults.size
+        return todos.size
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val todo = realmResults[position]
+        val todo = todos[position]
         holder.todoContentText.text = todo?.content.toString()
     }
 
