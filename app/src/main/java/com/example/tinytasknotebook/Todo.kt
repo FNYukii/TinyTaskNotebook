@@ -1,4 +1,4 @@
-package com.example.tinytodo
+package com.example.tinytasknotebook
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

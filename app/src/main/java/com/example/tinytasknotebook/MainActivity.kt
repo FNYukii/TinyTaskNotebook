@@ -1,4 +1,4 @@
-package com.example.tinytodo
+package com.example.tinytasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.tinytodo
+package com.example.tinytasknotebook
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
-import io.realm.RealmResults
 import kotlinx.android.synthetic.main.one_todo.view.*
 
 class TodoRecyclerViewAdapter(

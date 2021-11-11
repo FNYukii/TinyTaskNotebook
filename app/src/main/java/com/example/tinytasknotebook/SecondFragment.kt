@@ -1,4 +1,4 @@
-package com.example.tinytodo
+package com.example.tinytasknotebook
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

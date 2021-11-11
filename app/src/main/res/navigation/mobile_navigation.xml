@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/navigation_first"
-        android:name="com.example.tinytodo.FirstFragment"
+        android:name="com.example.tinytasknotebook.FirstFragment"
         tools:layout="@layout/fragment_first" />
 
     <fragment
         android:id="@+id/navigation_second"
-        android:name="com.example.tinytodo.SecondFragment"
+        android:name="com.example.tinytasknotebook.SecondFragment"
         tools:layout="@layout/fragment_second" />
 
 </navigation>

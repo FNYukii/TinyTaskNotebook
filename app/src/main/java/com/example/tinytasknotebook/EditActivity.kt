@@ -1,8 +1,7 @@
-package com.example.tinytodo
+package com.example.tinytasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
