@@ -38,6 +38,7 @@ class FirstFragment : Fragment() {
         //Todosを取得
         val realm: Realm = Realm.getDefaultInstance()
         val todos: RealmResults<Todo> = realm.where<Todo>()
+            .equalTo("isAchieved", false)
             .findAll()
             .sort("id", Sort.DESCENDING)
 

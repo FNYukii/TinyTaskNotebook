@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/achievedTodoRecyclerView"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/noAchievedTodoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Second Fragment"
+        android:text="まだ達成済みのTodoがありません"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
