@@ -28,7 +28,6 @@ class FirstFragment : Fragment() {
 
         //Floating action button
         fab.setOnClickListener {
-            Log.d("hello", "hello")
             val intent = Intent(this.context, EditActivity::class.java)
             startActivity(intent)
         }
@@ -39,13 +38,9 @@ class FirstFragment : Fragment() {
             .findAll()
             .sort("id", Sort.DESCENDING)
 
-        Log.d("hello", "todos.count: ${todos.size}")
-
         //RecyclerView設定
         todoRecyclerView.layoutManager = GridLayoutManager(this.context, 1)
         todoRecyclerView.adapter = TodoRecyclerViewAdapter(todos)
-
-
     }
 
 

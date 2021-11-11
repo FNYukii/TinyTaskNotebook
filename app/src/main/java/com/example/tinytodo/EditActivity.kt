@@ -35,8 +35,6 @@ class EditActivity : AppCompatActivity() {
             todoContentText.text = todo?.content
         }
 
-        Log.d("hello", "id: $id")
-
         saveButton.setOnClickListener {
             if(id == 0){
                 //新規レコード用の値を用意する
@@ -59,7 +57,6 @@ class EditActivity : AppCompatActivity() {
             }
             finish()
         }
-
 
     }
 }
