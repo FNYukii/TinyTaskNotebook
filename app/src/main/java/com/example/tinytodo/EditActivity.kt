@@ -2,13 +2,11 @@ package com.example.tinytodo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.one_todo.*
 import java.util.*
 
 class EditActivity : AppCompatActivity() {
@@ -34,6 +32,7 @@ class EditActivity : AppCompatActivity() {
                 .findFirst()
             contentEdit.setText(todo?.content)
             saveButton.text = "更新"
+            deleteButton.visibility = View.VISIBLE
         }
 
         saveButton.setOnClickListener {
@@ -55,6 +54,16 @@ class EditActivity : AppCompatActivity() {
                 realm.executeTransaction {
                     todo?.content = contentEdit.text.toString()
                 }
+            }
+            finish()
+        }
+
+        deleteButton.setOnClickListener {
+            val todo = realm.where<Todo>()
+                .equalTo("id", id)
+                .findFirst()
+            realm.executeTransaction {
+                todo?.deleteFromRealm()
             }
             finish()
         }
