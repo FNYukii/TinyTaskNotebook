@@ -37,6 +37,11 @@ class FirstFragment : Fragment() {
             .findAll()
             .sort("id", Sort.DESCENDING)
 
+        //NoTodoText
+        if (todos.size != 0) {
+            noTodoText.visibility = View.INVISIBLE
+        }
+
         //RecyclerView設定
         todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
         todoRecyclerView.adapter = TodoRecyclerViewAdapter(todos)
